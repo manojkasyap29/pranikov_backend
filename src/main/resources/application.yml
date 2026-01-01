@@ -11,15 +11,21 @@ spring:
       max-request-size: ${MULTIPART_MAX_REQUEST_SIZE:10MB}
 
   datasource:
-    url: ${SPRING_DATASOURCE_URL}
+    url: ${JDBC_DATABASE_URL}
     username: ${SPRING_DATASOURCE_USERNAME}
     password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
+
+    hikari:
+      minimum-idle: 1
+      maximum-pool-size: 5
+      pool-name: HikariPool
 
   jpa:
     hibernate:
       ddl-auto: ${JPA_DDL_AUTO:update}
     open-in-view: false
+    show-sql: false
 
 app:
   cors:
